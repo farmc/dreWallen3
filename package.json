@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "discord.js": "^14.6.0",
+    "dotenv": "^16.0.3"
+  },
+  "name": "drewallen3",
+  "description": "Discord bot to replace the currently broken one",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farmc/dreWallen3.git"
+  },
+  "author": "Colin Farmer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/farmc/dreWallen3/issues"
+  },
+  "homepage": "https://github.com/farmc/dreWallen3#readme"
+}
