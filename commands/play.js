@@ -12,7 +12,6 @@ const {
 } = require("@discordjs/voice");
 
 async function joinAndPlay(interaction, filePath, link) {
-  console.log("hi");
   // check if user is in voice channel
   if (!interaction.member.voice.channel) {
     await interaction.followUp("You are not in a voice channel!");
