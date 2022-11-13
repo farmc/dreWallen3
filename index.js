@@ -7,7 +7,9 @@ const { Client, Collection, Events, GatewayIntentBits } = require("discord.js");
 dotenv.config();
 
 // start client and load commands
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates],
+});
 
 client.commands = new Collection();
 
@@ -55,3 +57,5 @@ client.once(Events.ClientReady, (c) => {
 
 // Log in to Discord with your client's token
 client.login(process.env.DISCORD_TOKEN);
+
+module.exports = { client };
