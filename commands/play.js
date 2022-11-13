@@ -12,9 +12,10 @@ const {
 } = require("@discordjs/voice");
 
 async function joinAndPlay(interaction, filePath, link) {
+  console.log("hi");
   // check if user is in voice channel
   if (!interaction.member.voice.channel) {
-    await interaction.reply("You are not in a voice channel!");
+    await interaction.followUp("You are not in a voice channel!");
     return;
   }
 
@@ -38,7 +39,7 @@ async function joinAndPlay(interaction, filePath, link) {
       player.play(resource);
       connection.subscribe(player);
 
-      interaction.reply(`Playing ${link}`);
+      interaction.followUp(`Playing ${link}`);
       console.log(`Playing ${link}`);
 
       // clean up
@@ -49,7 +50,7 @@ async function joinAndPlay(interaction, filePath, link) {
       });
     } catch (err) {
       console.log(err);
-      interaction.reply("Error while attempt to play file");
+      interaction.followUp("Error while attempt to play file");
       connection.destroy();
     }
   });
@@ -97,12 +98,14 @@ module.exports = {
     ),
 
   async execute(interaction) {
+    await interaction.reply("working on it...");
+
     const query = interaction.options.getString("query");
     let link = interaction.options.getString("link");
 
     // make sure exactly one paramter specified
     if ((!query && !link) || (query && link)) {
-      await interaction.reply(`Provide either link or query, not both`);
+      await interaction.followUp(`Provide either link or query, not both`);
       return;
     }
 
@@ -112,7 +115,7 @@ module.exports = {
     // validate
     if (!ytdl.validateURL(link)) {
       // validate youtube link
-      await interaction.reply(`${link} is not a valid YouTube link`);
+      await interaction.followUp(`${link} is not a valid YouTube link`);
       return;
     }
     const videoId = ytdl.getVideoID(link);
